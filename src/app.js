@@ -2,7 +2,9 @@ const morgan = require("morgan");
 const express = require("express");
 const cors = require("cors");
 const db = require("./utils/db");
-const initModels = require("./modules/initModels");
+const initModels = require("./models/initModels");
+const { UserRoutes, AuthRoutes, ProductRoutes } = require("./routes");
+const handleError = require("./middlewares/error.middlewares");
 
 require("dotenv").config();
 
@@ -18,7 +20,7 @@ db.authenticate()
   .then(() => console.log("auth ok"))
   .catch((error) => console.log(error));
 
-db.sync({ force: true })
+db.sync({ force: false })
   .then(() => console.log("db sync"))
   .catch((error) => console.log(error));
 
@@ -26,4 +28,9 @@ app.get("/", (request, response) => {
   response.status(200).json({ message: "ok" });
 });
 
+app.use("/api/v1", UserRoutes);
+app.use("/api/v1", AuthRoutes);
+app.use("/api/v1", ProductRoutes);
+
+app.use(handleError);
 module.exports = app;

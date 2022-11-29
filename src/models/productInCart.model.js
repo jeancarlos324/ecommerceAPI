@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const db = require("../utils/db");
 
-const ProductInOrder = db.define("product_in_order", {
+const ProductInCart = db.define("product_in_cart", {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -34,4 +34,4 @@ const ProductInOrder = db.define("product_in_order", {
   },
 });
 
-module.exports = ProductInOrder;
+module.exports = ProductInCart;
