@@ -27,4 +27,18 @@ const getAllUser = async (request, response, next) => {
   }
 };
 
-module.exports = { createUser, getAllUser };
+const getAllProductsByUser = async (request, response, next) => {
+  try {
+    const { userId } = request.params;
+    const result = await UserServices.getProduct(userId);
+    response.json(result);
+  } catch (error) {
+    next({
+      errorContent: error.message,
+      status: 400,
+      message: "Could not get all products by User",
+    });
+  }
+};
+
+module.exports = { createUser, getAllUser, getAllProductsByUser };

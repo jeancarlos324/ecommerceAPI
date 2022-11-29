@@ -3,7 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const db = require("./utils/db");
 const initModels = require("./models/initModels");
-const { UserRoutes, AuthRoutes, ProductRoutes } = require("./routes");
+const {
+  UserRoutes,
+  AuthRoutes,
+  CategoriesRoutes,
+  ProductRoutes,
+} = require("./routes");
 const handleError = require("./middlewares/error.middlewares");
 
 require("dotenv").config();
@@ -30,6 +35,7 @@ app.get("/", (request, response) => {
 
 app.use("/api/v1", UserRoutes);
 app.use("/api/v1", AuthRoutes);
+app.use("/api/v1", CategoriesRoutes);
 app.use("/api/v1", ProductRoutes);
 
 app.use(handleError);
