@@ -10,6 +10,7 @@ const {
   createUser,
   getAllUser,
   getAllProductsByUser,
+  updateUser,
 } = require("./users.controllers");
 const {
   getAllCategories,
@@ -28,4 +29,5 @@ module.exports = {
   getProductsById,
   updateProduct,
   deleteProduct,
+  updateUser,
 };

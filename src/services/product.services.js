@@ -1,4 +1,3 @@
-const { Sequelize } = require("sequelize");
 const { Products, ProductCategories, Categories } = require("../models");
 const { Op } = require("sequelize");
 class ProductServices {
@@ -36,6 +35,7 @@ class ProductServices {
           attributes: ["id", "name"],
         },
       });
+      console.log(query);
       return query;
     } catch (error) {
       throw error;

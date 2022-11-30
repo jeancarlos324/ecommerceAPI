@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { Users, Products, Categories } = require("../models");
 
 class UserServices {
@@ -32,6 +33,19 @@ class UserServices {
           attributes: ["id", "name"],
         },
       });
+      return query;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async update(updateUser) {
+    try {
+      const { id, password, firstName, lastName, username } = updateUser;
+      const query = await Users.update(
+        { password, firstName, lastName, username },
+        { where: { id } }
+      );
       return query;
     } catch (error) {
       throw error;

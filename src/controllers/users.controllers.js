@@ -41,4 +41,29 @@ const getAllProductsByUser = async (request, response, next) => {
   }
 };
 
-module.exports = { createUser, getAllUser, getAllProductsByUser };
+const updateUser = async (request, response, next) => {
+  const { id } = request.params;
+  const keyData = ["password", "firstName", "lastName", "username"];
+  const parseKeyRequire = JSON.stringify(keyData);
+  try {
+    const updateData = request.body;
+    const keyUpdates = Object.keys(updateData);
+    const parseUpdateUser = JSON.stringify(keyUpdates);
+
+    if (parseUpdateUser === parseKeyRequire) {
+      const result = await UserServices.update({ id, ...updateData });
+      response.json(result);
+    } else {
+      response
+        .json({ mesage: `Enter the data correctly ${parseKeyRequire}` })
+        .status(400);
+    }
+  } catch (error) {
+    next({
+      errorContent: error.message,
+      status: 400,
+      message: `Could not updated User id: ${id}`,
+    });
+  }
+};
+module.exports = { createUser, getAllUser, getAllProductsByUser, updateUser };
