@@ -63,7 +63,7 @@ const products = [
     image:
       "https://www.shutterstock.com/image-illustration/ultra-high-definition-digital-television-260nw-551106277.jpg",
     availableQty: 4,
-    status: "awa",
+    status: "available",
     userId: 2,
   },
   {
@@ -72,7 +72,7 @@ const products = [
     image:
       "https://www.shutterstock.com/image-illustration/ultra-high-definition-digital-television-260nw-551106277.jpg",
     availableQty: 0,
-    status: "awa",
+    status: "unavailable",
     userId: 1,
   },
   {
@@ -81,7 +81,7 @@ const products = [
     image:
       "https://www.shutterstock.com/image-illustration/ultra-high-definition-digital-television-260nw-551106277.jpg",
     availableQty: 1,
-    status: "awa",
+    status: "available",
     userId: 3,
   },
 ];
@@ -129,9 +129,7 @@ db.sync({ force: true }).then(() => {
   }, 200);
 
   setTimeout(() => {
-    productCategories.forEach(
-      async (pc) => await ProductCategories.create(pc)
-    );
+    productCategories.forEach(async (pc) => await ProductCategories.create(pc));
   }, 300);
 
   console.log("seeding stop");

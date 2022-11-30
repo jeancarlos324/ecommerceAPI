@@ -26,8 +26,8 @@ const Products = db.define("products", {
     field: "available_quantity",
   },
   status: {
-    type: DataTypes.STRING,
-    //defaultValue: "",
+    type: DataTypes.ENUM("available", "unavailable"),
+    defaultValue: "available",
     allowNull: false,
   },
   userId: {

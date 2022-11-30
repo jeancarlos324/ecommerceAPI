@@ -1,4 +1,5 @@
 const { userLogin } = require("./auth.controllers");
+const { addToCart } = require("./cart.controllers");
 const {
   createProduct,
   getAllProducts,
@@ -30,4 +31,5 @@ module.exports = {
   updateProduct,
   deleteProduct,
   updateUser,
+  addToCart,
 };

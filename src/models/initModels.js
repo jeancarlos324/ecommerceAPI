@@ -12,7 +12,7 @@ const initModels = () => {
   Products.belongsToMany(Categories, { through: "prod_categories" });
   Categories.belongsToMany(Products, { through: "prod_categories" });
 
-  Products.belongsTo(Users, { as: "owner", foreignKey: "user_id" });
+  Products.belongsTo(Users, { as: "seller", foreignKey: "user_id" });
   Users.hasMany(Products, { as: "product", foreignKey: "user_id" });
 
   Cart.belongsTo(Users, { as: "buyer", foreignKey: "user_id" });

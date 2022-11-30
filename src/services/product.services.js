@@ -1,4 +1,4 @@
-const { Products, ProductCategories, Categories } = require("../models");
+const { Products, ProductCategories, Categories, Users } = require("../models");
 const { Op } = require("sequelize");
 class ProductServices {
   static async create(newProduct) {
@@ -29,11 +29,18 @@ class ProductServices {
         attributes: {
           exclude: ["createdAt", "updatedAt", "userId"],
         },
-        include: {
-          model: Categories,
-          as: "categories",
-          attributes: ["id", "name"],
-        },
+        include: [
+          {
+            model: Users,
+            as: "seller",
+            attributes: ["username", "firstName", "lastName"],
+          },
+          {
+            model: Categories,
+            as: "categories",
+            attributes: ["id", "name"],
+          },
+        ],
       });
       console.log(query);
       return query;
@@ -49,11 +56,18 @@ class ProductServices {
         attributes: {
           exclude: ["createdAt", "updatedAt", "userId"],
         },
-        include: {
-          model: Categories,
-          as: "categories",
-          attributes: ["id", "name"],
-        },
+        include: [
+          {
+            model: Users,
+            as: "seller",
+            attributes: ["username", "firstName", "lastName"],
+          },
+          {
+            model: Categories,
+            as: "categories",
+            attributes: ["id", "name"],
+          },
+        ],
       });
       return query;
     } catch (error) {
