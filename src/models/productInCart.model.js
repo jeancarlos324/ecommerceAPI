@@ -28,9 +28,9 @@ const ProductInCart = db.define("product_in_cart", {
     defaultValue: "0",
   },
   status: {
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.ENUM("purchased", "on hold"),
     allowNull: false,
-    defaultValue: false,
+    defaultValue: "on hold",
   },
 });
 

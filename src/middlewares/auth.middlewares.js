@@ -7,6 +7,7 @@ const authenticate = (request, response, next) => {
     const token = bearerToken.split("Bearer ")[1];
     try {
       const decodedToken = jwt.verify(token, process.env.SECRET, "HS512");
+      response.locals.userInfo = decodedToken;
       next();
     } catch (error) {
       next({

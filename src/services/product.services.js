@@ -42,7 +42,6 @@ class ProductServices {
           },
         ],
       });
-      console.log(query);
       return query;
     } catch (error) {
       throw error;
@@ -78,8 +77,6 @@ class ProductServices {
   static async update(productUpdate) {
     try {
       const { id, ...product } = productUpdate;
-      console.log(id);
-      console.log(product);
       const query = await Products.update(product, { where: { id } });
       return query;
     } catch (error) {

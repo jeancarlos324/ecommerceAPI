@@ -9,7 +9,7 @@ const Cart = db.define("cart", {
     primaryKey: true,
   },
   totalPrice: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false,
     label: "total_price",
   },

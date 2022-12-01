@@ -10,7 +10,7 @@ const {
 
 const router = Router();
 
-router.get("/products", getAllProducts);
+router.get("/products",  getAllProducts);
 router.get("/products/:productId", getProductsById);
 router.post("/products", createProduct);
 router.put("/products/:productId", updateProduct);
