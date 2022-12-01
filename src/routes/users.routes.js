@@ -11,7 +11,7 @@ const router = Router();
 
 router.get("/users", authenticate, getAllUser);
 router.post("/users", createUser);
-router.get("/users/:userId/products", getAllProductsByUser);
-router.patch("/users/:id", updateUser);
+router.get("/users/:userId/products", authenticate, getAllProductsByUser);
+router.patch("/users/:id", authenticate, updateUser);
 
 module.exports = router;

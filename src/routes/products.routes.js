@@ -6,14 +6,14 @@ const {
   updateProduct,
   deleteProduct,
 } = require("../controllers");
-// const authenticate = require("../middlewares/auth.middlewares");
+const authenticate = require("../middlewares/auth.middlewares");
 
 const router = Router();
 
-router.get("/products",  getAllProducts);
+router.get("/products", getAllProducts);
 router.get("/products/:productId", getProductsById);
-router.post("/products", createProduct);
-router.put("/products/:productId", updateProduct);
-router.delete("/products/:productId", deleteProduct);
+router.post("/products", authenticate, createProduct);
+router.put("/products/:productId", authenticate, updateProduct);
+router.delete("/products/:productId", authenticate, deleteProduct);
 
 module.exports = router;

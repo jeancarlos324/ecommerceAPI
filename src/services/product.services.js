@@ -25,6 +25,7 @@ class ProductServices {
       const query = await Products.findAll({
         where: {
           availableQty: { [Op.gt]: 0 },
+          // userId: { [Op.ne]: 1 },
         },
         attributes: {
           exclude: ["createdAt", "updatedAt", "userId"],

@@ -40,6 +40,22 @@ const addToCart = async (request, response, next) => {
   }
 };
 
+const removeToCart = async (request, response, next) => {
+  const { id } = request.params;
+  try {
+    const { userInfo } = response.locals;
+    const result = await CartServices.remove(id, userInfo.id);
+    response.locals.cart = result;
+    next();
+  } catch (error) {
+    next({
+      errorContent: error.message,
+      status: 400,
+      message: `Could not delete product ${id}`,
+    });
+  }
+};
+
 const updatePriceCart = async (request, response, next) => {
   try {
     const { status, query } = response.locals.cart;
@@ -70,4 +86,10 @@ const purchasedCart = async (request, response, next) => {
   }
 };
 
-module.exports = { addToCart, updatePriceCart, getCart, purchasedCart };
+module.exports = {
+  addToCart,
+  updatePriceCart,
+  getCart,
+  purchasedCart,
+  removeToCart,
+};

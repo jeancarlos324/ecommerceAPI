@@ -4,6 +4,7 @@ const {
   updatePriceCart,
   getCart,
   purchasedCart,
+  removeToCart,
 } = require("./cart.controllers");
 const {
   createProduct,
@@ -42,4 +43,5 @@ module.exports = {
   getCart,
   purchasedCart,
   getAllOrders,
+  removeToCart,
 };

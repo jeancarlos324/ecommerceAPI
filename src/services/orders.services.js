@@ -6,25 +6,27 @@ class OrderServices {
       const query = Orders.findAll({
         where: { userId },
         attributes: { exclude: ["userId"] },
-        include: {
-          model: ProductInOrder,
-          as: "cart",
-          attributes: {
-            exclude: [
-              "orderId",
-              "userId",
-              "createdAt",
-              "updatedAt",
-              "productId",
-              "order_id",
-            ],
+        include: [
+          {
+            model: ProductInOrder,
+            as: "cart",
+            attributes: {
+              exclude: [
+                "orderId",
+                "userId",
+                "createdAt",
+                "updatedAt",
+                "productId",
+                "order_id",
+              ],
+            },
+            include: {
+              model: Products,
+              as: "product",
+              attributes: ["id", "name", "price", "image"],
+            },
           },
-          include: {
-            model: Products,
-            as: "product",
-            attributes: ["id", "name", "price", "image"],
-          },
-        },
+        ],
       });
       return query;
     } catch (error) {

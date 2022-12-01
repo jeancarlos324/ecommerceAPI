@@ -31,14 +31,20 @@ class CartServices {
 
   static async priceUpdate(status, price, userId) {
     try {
+      const getBeforePrice = await Cart.findOne({
+        where: { userId, status: "on hold" },
+        attributes: ["id", "totalPrice"],
+      });
+      const { id, totalPrice } = getBeforePrice.dataValues;
       if (status === "added") {
-        const getBeforePrice = await Cart.findOne({
-          where: { userId, status: "on hold" },
-          attributes: ["id", "totalPrice"],
-        });
-        const { id, totalPrice } = getBeforePrice.dataValues;
         const updated = await Cart.update(
           { totalPrice: totalPrice + price },
+          { where: { id } }
+        );
+        return updated;
+      } else if (status === "removed") {
+        const updated = await Cart.update(
+          { totalPrice: totalPrice - price },
           { where: { id } }
         );
         return updated;
@@ -82,6 +88,26 @@ class CartServices {
         });
         return { query, status: "added" };
       }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async remove(id, userId) {
+    try {
+      const getCart = await Cart.findOne({ where: { userId } });
+      const cartId = getCart.id;
+      const getPriceProduct = await ProductInCart.findOne({
+        where: { cartId, id },
+      });
+      const { price, quantity } = getPriceProduct;
+      const remove = await ProductInCart.destroy({ where: { cartId, id } });
+      const query = {
+        status: "removed",
+        query: { price, quantity, id: getPriceProduct.id },
+      };
+      if (remove) return query;
+      return remove;
     } catch (error) {
       throw error;
     }
