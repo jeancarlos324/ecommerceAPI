@@ -4,7 +4,11 @@ const getCart = async (request, response, next) => {
   const { userInfo } = response.locals;
   try {
     const result = await CartServices.get(userInfo.id);
-    response.json(result);
+    if (result) {
+      response.json(result);
+    } else {
+      response.status(400).json({ message: "Cart is empty" });
+    }
   } catch (error) {
     next({
       errorContent: error.message,

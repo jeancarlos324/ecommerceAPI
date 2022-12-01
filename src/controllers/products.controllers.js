@@ -17,7 +17,6 @@ const createProduct = async (request, response, next) => {
 const getAllProducts = async (request, response, next) => {
   try {
     const result = await ProductServices.getAll();
-    response.json(result);
   } catch (error) {
     next({
       errorContent: error.message,
