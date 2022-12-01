@@ -52,4 +52,18 @@ const updatePriceCart = async (request, response, next) => {
   }
 };
 
-module.exports = { addToCart, updatePriceCart, getCart };
+const purchasedCart = async (request, response, next) => {
+  try {
+    const { userInfo } = response.locals;
+    const result = await CartServices.purchase(userInfo.id);
+    response.json(result);
+  } catch (error) {
+    next({
+      errorContent: error.message,
+      status: 400,
+      message: `Could not purchased cart`,
+    });
+  }
+};
+
+module.exports = { addToCart, updatePriceCart, getCart, purchasedCart };

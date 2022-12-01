@@ -26,13 +26,18 @@ const initModels = () => {
     foreignKey: "product_id",
   });
   Products.hasOne(ProductInCart, { as: "cart", foreignKey: "product_id" });
+
   ProductInCart.belongsTo(Cart, { as: "cart", foreignKey: "cart_id" });
   Cart.hasMany(ProductInCart, { as: "products", foreignKey: "cart_id" });
 
-  ProductInOrder.belongsTo(Products, { foreignKey: "order_id" });
-  Products.hasOne(ProductInOrder, { foreignKey: "order_id" });
-  ProductInOrder.belongsTo(Orders, { foreignKey: "cart_id" });
-  Orders.hasOne(ProductInOrder, { foreignKey: "cart_id" });
+  ProductInOrder.belongsTo(Products, {
+    as: "product",
+    foreignKey: "product_id",
+  });
+  Products.hasOne(ProductInOrder, { as: "products", foreignKey: "product_id" });
+
+  ProductInOrder.belongsTo(Orders, { as: "order", foreignKey: "order_id" });
+  Orders.hasOne(ProductInOrder, { as: "cart", foreignKey: "order_id" });
 };
 
 module.exports = initModels;

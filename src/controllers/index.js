@@ -1,5 +1,10 @@
 const { userLogin } = require("./auth.controllers");
-const { addToCart, updatePriceCart, getCart } = require("./cart.controllers");
+const {
+  addToCart,
+  updatePriceCart,
+  getCart,
+  purchasedCart,
+} = require("./cart.controllers");
 const {
   createProduct,
   getAllProducts,
@@ -18,6 +23,7 @@ const {
   createCategory,
 } = require("./categories.controllers");
 
+const { getAllOrders } = require("./orders.controllers");
 module.exports = {
   createUser,
   getAllUser,
@@ -34,4 +40,6 @@ module.exports = {
   addToCart,
   updatePriceCart,
   getCart,
+  purchasedCart,
+  getAllOrders,
 };

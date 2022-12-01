@@ -71,7 +71,7 @@ const products = [
     price: 1231.21,
     image:
       "https://www.shutterstock.com/image-illustration/ultra-high-definition-digital-television-260nw-551106277.jpg",
-    availableQty: 0,
+    availableQty: 10,
     status: "unavailable",
     userId: 1,
   },
@@ -80,7 +80,7 @@ const products = [
     price: 31.21,
     image:
       "https://www.shutterstock.com/image-illustration/ultra-high-definition-digital-television-260nw-551106277.jpg",
-    availableQty: 1,
+    availableQty: 5,
     status: "available",
     userId: 3,
   },

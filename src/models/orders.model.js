@@ -9,7 +9,7 @@ const Orders = db.define("orders", {
     primaryKey: true,
   },
   totalPrice: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false,
     field: "total_price",
   },

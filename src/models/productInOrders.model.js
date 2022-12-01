@@ -8,7 +8,7 @@ const ProductInOrder = db.define("product_in_order", {
     autoIncrement: true,
     primaryKey: true,
   },
-  OrderId: {
+  orderId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     field: "order_id",
@@ -28,9 +28,9 @@ const ProductInOrder = db.define("product_in_order", {
     defaultValue: "0",
   },
   status: {
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.ENUM("pending", "purchased"),
     allowNull: false,
-    defaultValue: false,
+    defaultValue: "pending",
   },
 });
 

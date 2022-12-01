@@ -9,6 +9,7 @@ const {
   CategoriesRoutes,
   ProductRoutes,
   CartRoutes,
+  OrdersRoutes,
 } = require("./routes");
 const handleError = require("./middlewares/error.middlewares");
 
@@ -39,6 +40,7 @@ app.use("/api/v1", AuthRoutes);
 app.use("/api/v1", CategoriesRoutes);
 app.use("/api/v1", ProductRoutes);
 app.use("/api/v1", CartRoutes);
+app.use("/api/v1", OrdersRoutes);
 
 app.use(handleError);
 module.exports = app;

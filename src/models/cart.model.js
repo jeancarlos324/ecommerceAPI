@@ -13,6 +13,10 @@ const Cart = db.define("cart", {
     allowNull: false,
     label: "total_price",
   },
+  status: {
+    type: DataTypes.ENUM("purchased", "on hold"),
+    defaultValue: "on hold",
+  },
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
