@@ -53,6 +53,24 @@ const db = require("../utils/db");
  *         categories:
  *           type: array
  *           example: [1,2]
+ *     updateProduct:
+ *      type: object
+ *      properties:
+ *         name:
+ *           type: string
+ *           example: Celular2 LCDs22
+ *         price:
+ *           type: number
+ *           example: 7
+ *         availableQty:
+ *           type: number
+ *           example: 10
+ *         image:
+ *           type: string
+ *           example: https://w7.pngwing.com/pngs/310/398/png-transparent-smoothie-coffee-blender-milk-cafe-coffee-kitchen-baby-cafe-thumbnail.png
+ *         status:
+ *           type: string
+ *           example: available
  */
 
 const Products = db.define("products", {

@@ -11,7 +11,6 @@ const router = Router();
  *     summary: Get all categories from Ecommerce API
  *     tags: [Category]
  *     description: You just need to send the request
- *     required: true
  *     content:
  *       application/json:
  *         schema:
@@ -35,11 +34,13 @@ const router = Router();
  *     summary: create Categories
  *     tags: [Category]
  *     description: You just need to send the request
- *     required: true
- *     content:
- *       application/json:
- *         schema:
- *           $ref: "#/components/schemas/category"
+ *     requestBody:
+ *       description: send New Category
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/category"
  *     responses:
  *       201:
  *         description: Ok

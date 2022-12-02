@@ -10,7 +10,7 @@ const db = require("../utils/db");
  *       properties:
  *         name:
  *           type: string
- *           example: Electrodomesticos
+ *           example: electrodomesticos
  */
 
 const Categories = db.define(

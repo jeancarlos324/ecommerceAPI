@@ -6,17 +6,18 @@ const router = Router();
  * @openapi
  * /api/v1/auth/login:
  *   post:
- *     summary: Login int Ecommerce App
+ *     summary: Login to my aplicaction
  *     tags: [Login]
- *     description: You just need to send the request
- *     required: true
- *     content:
- *       application/json:
- *         schema:
- *           $ref: "#/components/schemas/login"
+ *     requestBody:
+ *       description: Login and generate a Token to acces to another endpoints
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/login"
  *     responses:
- *       200:
- *         description: Ok
+ *       201:
+ *         description: logged
  *         content:
  *           application/json:
  *             schema:
@@ -28,7 +29,7 @@ const router = Router();
  *                 data:
  *                   type: array
  *                   items:
- *                     $ref: "#/components/schemas/login"
+ *                     $ref: "#/components/schemas/token"
  */
 router.post("/auth/login", userLogin);
 

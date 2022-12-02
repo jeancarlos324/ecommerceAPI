@@ -47,10 +47,19 @@ const db = require("../utils/db");
  *      properties:
  *         email:
  *           type: string
- *           example: gpro1pro@gmail.com
+ *           example: maria2@gmail.com
  *         password:
  *           type: string
  *           example: 1234
+ *     token:
+ *      type: object
+ *      properties:
+ *         email:
+ *           type: string
+ *           example: maria2@gmail.com
+ *         token:
+ *           type: string
+ *           example: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlhbkBnbWFpbC5jb20iLCJpZCI6MSwiaWF0IjoxNjY5OTk5NTMwfQ.nWexjxYDmcLOqrQ14SvfI3sATJI4vlIYhsEreCN65CKHT1hsRPL-1_Al1Smd_nFGRSasltyap8SX0O4RwN1kUw
  *   securitySchemes:
  *     bearerAuth:
  *       type: http
