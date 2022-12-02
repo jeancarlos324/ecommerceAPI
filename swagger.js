@@ -14,6 +14,10 @@ const options = {
     "./src/routes/products.routes.js",
     "./src/models/products.model.js",
     "./src/models/users.model.js",
+    "./src/routes/auth.routes.js",
+    "./src/models/users.routes.js",
+    "./src/models/categories.models.js",
+    "./src/routes/categories.routes.js",
   ],
 };
 
