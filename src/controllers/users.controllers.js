@@ -1,22 +1,22 @@
 const { UserServices } = require("../services");
+const welcomeTemplate = require("../template/wellcome");
 const transporter = require("../utils/mailer");
 
 const createUser = async (request, response, next) => {
   try {
     const newUser = request.body;
     const result = await UserServices.create(newUser);
-    console.log(result.email);
     response.status(201).json(result);
     transporter.sendMail({
       from: "<jecar324@gmail.com>",
       to: result.email,
       subject: "Wellcome to Ecommerce API",
       text: `Wellcome ${result.username} to Ecommerce API`,
-      html: `<h2>Wellcome ${result.username} to Ecommerce API</h2>`,
+      html: welcomeTemplate(result.firstName, result.lastName),
     });
   } catch (error) {
     next({
-      errorContent: error.message,
+      errorContent: error,
       status: 400,
       message: "Failed to create user",
     });

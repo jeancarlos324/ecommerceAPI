@@ -123,6 +123,11 @@ class CartServices {
           model: ProductInCart,
           as: "products",
           attributes: ["id", "price", "status", "quantity", "productId"],
+          include: {
+            model: Products,
+            as: "product",
+            attributes: ["name", "price"],
+          },
         },
       });
       const { id, totalPrice, products } = getCart.dataValues;
@@ -145,6 +150,7 @@ class CartServices {
       return {
         status: "purchased",
         message: `purchased card ${id} in order ${createOrder.id}`,
+        getCart,
       };
     } catch (error) {
       throw error;

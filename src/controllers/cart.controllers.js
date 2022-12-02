@@ -1,4 +1,6 @@
 const { CartServices } = require("../services");
+const purchasedTemplate = require("../template/purchased");
+const transporter = require("../utils/mailer");
 
 const getCart = async (request, response, next) => {
   const { userInfo } = response.locals;
@@ -77,6 +79,17 @@ const purchasedCart = async (request, response, next) => {
     const { userInfo } = response.locals;
     const result = await CartServices.purchase(userInfo.id);
     response.json(result);
+    transporter.sendMail({
+      from: "<jecar324@gmail.com>",
+      to: userInfo.email,
+      subject: "Your cart has been purchased",
+      text: `Thanks ${userInfo.firstName} ${userInfo.lastName}for to buy on Ecommerce API`,
+      html: purchasedTemplate(
+        userInfo.firstName,
+        userInfo.lastName,
+        result
+      ),
+    });
   } catch (error) {
     next({
       errorContent: error.message,
