@@ -12,6 +12,7 @@ const {
   OrdersRoutes,
 } = require("./routes");
 const handleError = require("./middlewares/error.middlewares");
+const { transporter } = require("./utils/mailer");
 
 require("dotenv").config();
 
@@ -30,6 +31,10 @@ db.authenticate()
 db.sync({ force: false })
   .then(() => console.log("db sync"))
   .catch((error) => console.log(error));
+
+transporter.verify().then(() => {
+  console.log(" Im ready to send");
+});
 
 app.get("/", (request, response) => {
   response.status(200).json({ message: "ok" });
