@@ -450,7 +450,7 @@ const purchasedTemplate = (firstName, lastName, result) => {
                                     "
                                   >
                                     <span class="tinyMce-placeholder"
-                                      >Wellcome ${firstName} ${lastName} to Ecommerce API</span
+                                      >Hello,${firstName} ${lastName} Your purchase was successful  into Ecommerce API</span
                                     >
                                   </h1>
                                 </td>
