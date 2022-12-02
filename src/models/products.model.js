@@ -1,6 +1,60 @@
 const { DataTypes } = require("sequelize");
 const db = require("../utils/db");
 
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     product:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           example: Celular2 LCDs22
+ *         price:
+ *           type: number
+ *           example: 10.32
+ *         availableQty:
+ *           type: number
+ *           example: 5
+ *         image:
+ *           type: string
+ *           example: https://w7.pngwing.com/pngs/310/398/png-transparent-smoothie-coffee-blender-milk-cafe-coffee-kitchen-baby-cafe-thumbnail.png
+ *         status:
+ *           type: string
+ *           example: available
+ *         userId:
+ *           type: number
+ *           example: 1
+ *         categories:
+ *           type: array
+ *           example: [1,2]
+ *     registerProduct:
+ *      type: object
+ *      properties:
+ *         name:
+ *           type: string
+ *           example: Celular2 LCDs22
+ *         price:
+ *           type: number
+ *           example: 7
+ *         availableQty:
+ *           type: number
+ *           example: 10.12
+ *         image:
+ *           type: string
+ *           example: https://w7.pngwing.com/pngs/310/398/png-transparent-smoothie-coffee-blender-milk-cafe-coffee-kitchen-baby-cafe-thumbnail.png
+ *         status:
+ *           type: string
+ *           example: available
+ *         user_id:
+ *           type: number
+ *           example: 1
+ *         categories:
+ *           type: array
+ *           example: [1,2]
+ */
+
 const Products = db.define("products", {
   id: {
     type: DataTypes.INTEGER,

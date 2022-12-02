@@ -1,6 +1,66 @@
 const { DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const db = require("../utils/db");
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     users:
+ *       type: object
+ *       properties:
+ *         username:
+ *           type: string
+ *           example: jose234
+ *         firstName:
+ *           type: string
+ *           example: Jose
+ *         lastName:
+ *           type: string
+ *           example: Perez
+ *         email:
+ *           type: string
+ *           example: jose123@gmail.com
+ *         password:
+ *           type: string
+ *           example: 1234
+ *     register:
+ *      type: object
+ *      properties:
+ *         username:
+ *           type: string
+ *           example: jose234
+ *         firstName:
+ *           type: string
+ *           example: Jose
+ *         lastName:
+ *           type: string
+ *           example: Perez
+ *         email:
+ *           type: string
+ *           example: jose123@gmail.com
+ *         password:
+ *           type: string
+ *           example: 1234
+ *     login:
+ *      type: object
+ *      properties:
+ *         email:
+ *           type: string
+ *           example: jose123@gmail.com
+ *         password:
+ *           type: string
+ *           example: 1234
+ *         token:
+ *           type: string
+ *           example: ererdfs324twer4efjhdj,g.5j4jdsfsdffsfdsf3df
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
+ */
+
 const Users = db.define(
   "users",
   {
